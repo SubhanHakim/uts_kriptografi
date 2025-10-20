@@ -1,4 +1,4 @@
-import type { Algorithm, Mode, RunTextParams, RunTextResult } from "@/types/crypto";
+import type { RunTextParams, RunTextResult } from "@/types/crypto";
 import { vigenereEncrypt, vigenereDecrypt } from "@/cipher/vigenere";
 import { runExtendedText } from "@/cipher/runExtendedVigenereText";
 
@@ -11,12 +11,12 @@ export async function runCipherText(params: RunTextParams): Promise<RunTextResul
       ? vigenereEncrypt(text, key)
       : vigenereDecrypt(text, key);
 
-    const lettersPreview = letters.toLowerCase(); // sesuai spesifikasi tampilan
+    const lettersPreview = letters.toLowerCase();
     const base64 = btoa(lettersPreview);
     return { lettersPreview, base64 };
   }
 
   // extended
-  const { base64, previewText } = runExtendedText(mode, text, key);
-  return { base64, previewText };
+  const { base64, lettersPreview } = runExtendedText(mode, text, key);
+  return { base64, lettersPreview };
 }

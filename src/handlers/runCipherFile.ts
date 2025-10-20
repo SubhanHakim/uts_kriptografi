@@ -1,12 +1,14 @@
+import { 
+  readFileAsBytes, 
+  packHeaderAndData, 
+  unpackHeaderAndData, 
+  downloadBytes, 
+  type CryptoHeader
+} from "@/lib/file";
 import type { RunFileParams, RunFileResult } from "@/types/crypto";
 import { evigEncrypt, evigDecrypt } from "@/cipher/extendedVigenere";
-import type {
-  readFileAsBytes, packHeaderAndData, unpackHeaderAndData, downloadBytes,
-  CryptoHeader
-} from "@/lib/file";
 import { toBase64 } from "@/lib/base64";
 
-/** FILE MODE SELALU Extended Vigenere (256 byte) */
 export async function runCipherFile(params: RunFileParams): Promise<RunFileResult> {
   const { mode, file, key } = params;
   if (!file) throw new Error("Pilih file terlebih dahulu.");

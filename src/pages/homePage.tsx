@@ -39,7 +39,10 @@ export default function HomePage() {
       return;
     }
 
-    const result = programFunction(mode, text, key);
+
+    const inputText = typeof text === "string" ? text : new TextDecoder().decode(text);
+
+    const result = programFunction(mode, inputText, key);
     setOutput(result);
   };
 
@@ -65,7 +68,7 @@ export default function HomePage() {
           onTextChange={setText}
           fileSupported={fileSupportedPrograms.includes(selectedProgram)}
         />
-       <KeyInputSection selectedProgram={selectedProgram} inputKey={key} onKeyChange={setKey} />
+        <KeyInputSection selectedProgram={selectedProgram} inputKey={key} onKeyChange={setKey} />
         <Button onClick={handleRunProgram}>Run Program</Button>
         <OutputSection
           output={output}

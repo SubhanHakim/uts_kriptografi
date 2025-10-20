@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
-import { BookOpenIcon, InfoIcon, LifeBuoyIcon } from 'lucide-react';
 import { Button } from '../../button';
 import {
   NavigationMenu,

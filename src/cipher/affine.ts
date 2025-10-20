@@ -41,20 +41,19 @@ export function parseAffineKey(key: string): AffineKey {
 
 export function affineEncrypt(plain: string, key: string): string {
   const { a, b } = parseAffineKey(key);
-  console.log("Affine Encrypt - Key:", { a, b }); // Debugging key
+  console.log("Affine Encrypt - Key:", { a, b });
   const P = onlyAZ(plain);
-  console.log("Affine Encrypt - Plaintext:", P); // Debugging plaintext
+  console.log("Affine Encrypt - Plaintext:", P); 
   let out = "";
   for (let i = 0; i < P.length; i++) {
     const x = a2i(P[i]);
     const y = mod(a * x + b, 26);
-    console.log(`Encrypting: ${P[i]} (${x}) -> ${i2a(y)} (${y})`); // Debugging each character
+    console.log(`Encrypting: ${P[i]} (${x}) -> ${i2a(y)} (${y})`);
     out += i2a(y);
   }
   return out;
 }
 
-/** Dekripsi Affine: P = aInv * (C - b) mod 26 */
 export function affineDecrypt(cipher: string, key: string): string {
   const { a, b } = parseAffineKey(key);
   const aInv = modInv(a, 26);

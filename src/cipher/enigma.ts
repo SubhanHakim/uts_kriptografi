@@ -1,4 +1,4 @@
-// Rotor konfigurasi sederhana
+
 const ROTORS = [
   "EKMFLGDQVZNTOWYHXUSPAIBRCJ", 
   "AJDKSIRUXBLHWTMCQGZNPYFVOE",
@@ -14,19 +14,19 @@ const PLUGBOARD: Record<string, string> = {
   D: "C",
 };
 
-// Fungsi untuk substitusi karakter menggunakan rotor
+
 function substitute(char: string, rotor: string, reverse: boolean = false): string {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const index = reverse ? rotor.indexOf(char) : alphabet.indexOf(char);
   return reverse ? alphabet[index] : rotor[index];
 }
 
-// Fungsi untuk substitusi karakter menggunakan plugboard
+
 function plugboardSubstitute(char: string): string {
   return PLUGBOARD[char] || char;
 }
 
-// Fungsi utama Enigma Cipher
+
 export function enigmaEncrypt(plaintext: string, rotorPositions: number[]): string {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const rotors = ROTORS.map((rotor, i) =>
@@ -37,25 +37,25 @@ export function enigmaEncrypt(plaintext: string, rotorPositions: number[]): stri
     .toUpperCase()
     .split("")
     .map((char) => {
-      if (!alphabet.includes(char)) return char; // Abaikan karakter non-alfabet
+      if (!alphabet.includes(char)) return char;
 
-      // Plugboard substitusi awal
+
       char = plugboardSubstitute(char);
 
-      // Rotor substitusi maju
+      
       char = substitute(char, rotors[0]);
       char = substitute(char, rotors[1]);
       char = substitute(char, rotors[2]);
 
-      // Reflector substitusi
+      
       char = substitute(char, REFLECTOR);
 
-      // Rotor substitusi mundur
+      
       char = substitute(char, rotors[2], true);
       char = substitute(char, rotors[1], true);
       char = substitute(char, rotors[0], true);
 
-      // Plugboard substitusi akhir
+      
       return plugboardSubstitute(char);
     })
     .join("");

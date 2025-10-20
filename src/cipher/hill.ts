@@ -25,7 +25,7 @@ function modInverse(a: number, m: number): number | null {
 
 /** Hitung invers matriks */
 function inverseMatrix(matrix: number[][], modValue: number): number[][] | null {
-  const n = matrix.length;
+  // const n = matrix.length;
   const det = determinant(matrix);
   const detMod = mod(det, modValue);
   const detInv = modInverse(detMod, modValue);

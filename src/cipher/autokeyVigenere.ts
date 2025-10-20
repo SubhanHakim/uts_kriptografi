@@ -7,7 +7,6 @@ const normKey = (k: string) => {
   return K;
 };
 
-/** Enkripsi Auto-Key Vigenere (26 huruf A-Z) */
 export function autokeyEncrypt(plain: string, key: string): string {
   const P = onlyAZ(plain);
   const K0 = normKey(key);
