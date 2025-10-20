@@ -45,22 +45,26 @@ export const programRegistry: Record<
       return { lettersPreview, base64: btoa(lettersPreview) };
     }
   },
-  enigma: (mode, text, key) => {
-    console.log("Key diterima di programRegistry:", key);
+ enigma: (mode, text, key) => {
+  console.log("Key diterima di programRegistry:", key);
 
-    const rotorPositions = key
-      .split(",")
-      .map((pos) => parseInt(pos.trim(), 10));
+  const rotorPositions = key
+    .split(",")
+    .map((pos) => parseInt(pos.trim(), 10));
 
-    if (
-      rotorPositions.length !== 3 ||
-      rotorPositions.some((pos) => isNaN(pos))
-    ) {
-      console.error("Invalid Key:", key);
-      throw new Error("Key harus berupa 3 angka, contoh: 1,2,3.");
-    }
+  if (
+    rotorPositions.length !== 3 ||
+    rotorPositions.some((pos) => isNaN(pos))
+  ) {
+    console.error("Invalid Key:", key);
+    throw new Error("Key harus berupa 3 angka, contoh: 1,2,3.");
+  }
 
+  if (mode === "encrypt") {
     const lettersPreview = enigmaEncrypt(text, rotorPositions);
     return { lettersPreview, base64: btoa(lettersPreview) };
-  },
+  } else {
+    throw new Error("Mode 'decrypt' belum diimplementasikan untuk Enigma.");
+  }
+},
 };

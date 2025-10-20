@@ -23,7 +23,9 @@ export function evigDecrypt(bytes: Uint8Array, key: string): Uint8Array {
 }
 
 export function downloadBytes(bytes: Uint8Array, filename: string) {
-  const blob = new Blob([bytes], { type: "application/octet-stream" });
+  const safeBytes = new Uint8Array(bytes);
+
+  const blob = new Blob([safeBytes], { type: "application/octet-stream" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;

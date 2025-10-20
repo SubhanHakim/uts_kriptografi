@@ -112,7 +112,7 @@ export function playfairEncrypt(plain: string, key: string): string {
 // - hapus 'X' (atau padPrimary) bila berada di pola A X A (kemungkinan sisipan double-letter)
 // - hapus pad trailing di akhir bila panjang awal ganjil (opsional, sulit diketahui tanpa metadata)
 // Catatan: Depadding Playfair tidak selalu bisa sempurna tanpa metadata asli.
-function simpleDepad(decrypted: string, padPrimary = "X", padAlt = "Q"): string {
+function simpleDepad(decrypted: string, padPrimary = "X"): string {
   const chars = decrypted.split("");
   const out: string[] = [];
   for (let i = 0; i < chars.length; i++) {
