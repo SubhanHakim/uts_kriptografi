@@ -23,7 +23,7 @@ const AboutPage: React.FC = () => {
             className="h-full object-cover border-4 border-gray-700 rounded-md"
           />
           <h3 className="mt-4 text-xl font-semibold">Subhan Nur Iqbal Hakim</h3>
-          <p className="text-gray-400">NPM: 123456789</p>
+          <p className="text-gray-400">NPM: 227006163</p>
         </div>
 
         {/* Kartu 2 */}

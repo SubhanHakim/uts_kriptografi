@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# 🔐 UTS Kriptografi - Extended Vigenere Cipher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyek ini merupakan implementasi **Extended Vigenere Cipher** berbasis web menggunakan **React**, **TypeScript**, **Vite**, dan **TailwindCSS (shadcn/ui)**.  
+Aplikasi ini dirancang untuk memenuhi tugas **UTS Mata Kuliah Kriptografi**, dengan kemampuan untuk mengenkripsi dan mendekripsi teks maupun file, serta mendukung tampilan modern yang responsif.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧠 **Deskripsi Singkat**
 
-## React Compiler
+**Extended Vigenere Cipher** merupakan pengembangan dari algoritma klasik *Vigenere Cipher* yang bekerja pada seluruh **256 karakter ASCII**, bukan hanya huruf alfabet (A–Z).  
+Artinya, algoritma ini dapat digunakan untuk mengenkripsi teks, karakter spesial, bahkan file biner seperti gambar atau dokumen.  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Aplikasi ini dibangun untuk:
+- Menerima input teks maupun file.
+- Mengenkripsi atau mendekripsi menggunakan kunci tertentu.
+- Menampilkan hasil dalam format **Base64**.
+- Mengunduh hasil enkripsi sebagai file biner (`.dat`).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ **Fitur Utama**
+| Fitur | Deskripsi |
+|-------|------------|
+| 🔒 **Enkripsi** | Mengenkripsi teks atau file menggunakan Extended Vigenere Cipher. |
+| 🔓 **Dekripsi** | Mengembalikan cipher menjadi teks atau file asli. |
+| 💾 **Download File** | Hasil enkripsi dapat diunduh dalam bentuk file (`cipher.dat`). |
+| 🎨 **Mode Gelap & Terang** | Mendukung tema tampilan dark dan light mode. |
+| 🧭 **UI Modern** | Dibangun dengan shadcn/ui dan TailwindCSS. |
+| 📱 **Responsif** | Tampilan menyesuaikan semua ukuran layar (desktop, tablet, mobile). |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧩 **Teknologi yang Digunakan**
+- ⚛️ **React + TypeScript** – framework utama berbasis komponen.
+- ⚡ **Vite** – bundler cepat untuk pengembangan modern.
+- 🎨 **TailwindCSS + shadcn/ui** – styling dan komponen antarmuka modern.
+- 💾 **File API & Base64 Encoding** – untuk membaca dan menyimpan data biner.
+- 🧮 **Algoritma Kriptografi**:
+  - Vigenere Cipher (26 alfabet)
+  - Auto-Key Vigenere
+  - Extended Vigenere Cipher (256 byte)
+  - Playfair Cipher
+  - Affine Cipher
+  - Hill Cipher
+  - Super Encryption (Extended Vigenere + Transposisi Kolom)
+  - Enigma Cipher *(bonus)*
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ **Persyaratan Sistem**
+Sebelum menjalankan proyek, pastikan sistem Anda memenuhi syarat berikut:
+- **Node.js** ≥ 16.x  
+- **npm** ≥ 7.x  
+- Browser modern (Chrome, Edge, Firefox, Brave, Safari)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 **Instalasi & Menjalankan Proyek**
+
+1. **Clone repositori:**
+   ```bash
+   git clone https://github.com/username/uts-kriptografi.git
+   cd uts-kriptografi
