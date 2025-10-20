@@ -26,8 +26,8 @@ const ProgramSelector: React.FC<ProgramSelectorProps> = ({ programs, selectedPro
                         className={cn(
                             "cursor-pointer rounded-lg border p-4 shadow-md transition-colors",
                             selectedProgram === program.id
-                                ? "bg-primary text-black"
-                                : "bg-white/5 text-muted-foreground hover:bg-primary/10"
+                                ? "bg-primary text-white dark:text-black"
+                                : "bg-white text-black hover:bg-gray-100 dark:bg-white/5 dark:text-muted-foreground dark:hover:bg-primary/10" // Warna untuk mode light dan dark
                         )}
                     >
                         <h2 className="text-xl font-semibold">{program.name}</h2>

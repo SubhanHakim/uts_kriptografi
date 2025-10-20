@@ -13,7 +13,7 @@ const OutputSection: React.FC<OutputSectionProps> = ({ output, mode, selectedPro
   if (!output) return null;
 
   return (
-    <div className="mt-8 text-left w-full">
+    <div className="flex flex-col gap-5 text-left w-full justify-center items-center">
       <p className="text-lg font-medium">Letters Preview:</p>
       <Textarea
         value={output.lettersPreview}
@@ -26,12 +26,14 @@ const OutputSection: React.FC<OutputSectionProps> = ({ output, mode, selectedPro
         readOnly
         className="w-full h-32 resize-none overflow-auto border border-gray-300 rounded-md p-2"
       />
-      <Button
-        onClick={() => onDownload(output.base64, `output-${mode}-${selectedProgram}.dat`)}
-        className="mt-4 bg-primary text-white px-4 py-2 rounded-md"
-      >
-        Download Base64
-      </Button>
+      <div>
+        <Button
+          onClick={() => onDownload(output.base64, `output-${mode}-${selectedProgram}.dat`)}
+          className="mt-4 bg-primary text-black px-4 py-2 rounded-md"
+        >
+          Download Base64
+        </Button>
+      </div>
     </div>
   );
 };
