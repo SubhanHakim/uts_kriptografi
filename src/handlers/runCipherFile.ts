@@ -26,8 +26,11 @@ export async function runCipherFile(params: RunFileParams): Promise<RunFileResul
     };
     const packed = packHeaderAndData(header, cipher);
 
+    // Konversi Uint8Array ke string sebelum memanggil toBase64
+    const packedString = String.fromCharCode(...packed);
+
     return {
-      base64: toBase64(packed),  // tampilkan Base64 dari .dat
+      base64: toBase64(packedString),  // tampilkan Base64 dari .dat
       downloadName: "cipher.dat" // tombol download
     };
   }
@@ -38,8 +41,12 @@ export async function runCipherFile(params: RunFileParams): Promise<RunFileResul
     throw new Error("File bukan hasil Extended Vigenere.");
   }
   const plain = evigDecrypt(data, key);
+
+  // Konversi Uint8Array ke string sebelum memanggil toBase64
+  const plainString = String.fromCharCode(...plain);
+
   return {
-    base64: toBase64(plain),
+    base64: toBase64(plainString),
     downloadName: header.originalName || "restored.bin"
   };
 }

@@ -1,14 +1,25 @@
 export const strToBytes = (str: string) => new TextEncoder().encode(str);
 
-export const toBase64 = (bytes: Uint8Array) => {
-    let bin = '';
-    bytes.forEach((b) => bin += String.fromCharCode(b));
-    return btoa(bin);
+export function toBase64(input: string | Uint8Array): string {
+  let binary = "";
+
+  if (typeof input === "string") {
+    // Encode string ke Uint8Array, lalu konversi ke string Latin1
+    const bytes = new TextEncoder().encode(input);
+    binary = Array.from(bytes)
+      .map((byte) => String.fromCharCode(byte))
+      .join("");
+  } else {
+    // Proses Uint8Array langsung
+    binary = Array.from(input)
+      .map((byte) => String.fromCharCode(byte))
+      .join("");
+  }
+
+  return btoa(binary); // Konversi ke Base64
 }
 
-export const fromBase64 = (b64: string): Uint8Array => {
-    const bin = atob(b64.replace(/\s/g, ''));
-    const out = new Uint8Array(bin.length);
-    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
-    return out;
+export function fromBase64(base64: string): Uint8Array {
+  const binary = atob(base64); // Decode Base64 ke string biner
+  return new Uint8Array([...binary].map((char) => char.charCodeAt(0))); // Konversi ke Uint8Array
 }

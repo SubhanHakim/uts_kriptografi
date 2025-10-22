@@ -7,6 +7,7 @@ import { runAffineText } from "@/cipher/runAffineText";
 import { hillDecrypt, hillEncrypt } from "@/cipher/hill";
 import { superDecrypt, superEncrypt } from "@/cipher/superEncryption";
 import { enigmaEncrypt } from "@/cipher/enigma";
+import { toBase64 } from "./base64";
 
 export const programRegistry: Record<
   string,
@@ -39,32 +40,32 @@ export const programRegistry: Record<
 
     if (mode === "encrypt") {
       const lettersPreview = superEncrypt(text, vigenereKey, transposeKey);
-      return { lettersPreview, base64: btoa(lettersPreview) };
+      return { lettersPreview, base64: toBase64(lettersPreview) };
     } else {
       const lettersPreview = superDecrypt(text, vigenereKey, transposeKey);
-      return { lettersPreview, base64: btoa(lettersPreview) };
+      return { lettersPreview, base64: toBase64(lettersPreview) };
     }
   },
- enigma: (mode, text, key) => {
-  console.log("Key diterima di programRegistry:", key);
+  enigma: (mode, text, key) => {
+    console.log("Key diterima di programRegistry:", key);
 
-  const rotorPositions = key
-    .split(",")
-    .map((pos) => parseInt(pos.trim(), 10));
+    const rotorPositions = key
+      .split(",")
+      .map((pos) => parseInt(pos.trim(), 10));
 
-  if (
-    rotorPositions.length !== 3 ||
-    rotorPositions.some((pos) => isNaN(pos))
-  ) {
-    console.error("Invalid Key:", key);
-    throw new Error("Key harus berupa 3 angka, contoh: 1,2,3.");
-  }
+    if (
+      rotorPositions.length !== 3 ||
+      rotorPositions.some((pos) => isNaN(pos))
+    ) {
+      console.error("Invalid Key:", key);
+      throw new Error("Key harus berupa 3 angka, contoh: 1,2,3.");
+    }
 
-  if (mode === "encrypt") {
-    const lettersPreview = enigmaEncrypt(text, rotorPositions);
-    return { lettersPreview, base64: btoa(lettersPreview) };
-  } else {
-    throw new Error("Mode 'decrypt' belum diimplementasikan untuk Enigma.");
-  }
-},
+    if (mode === "encrypt") {
+      const lettersPreview = enigmaEncrypt(text, rotorPositions);
+      return { lettersPreview, base64: btoa(lettersPreview) };
+    } else {
+      throw new Error("Mode 'decrypt' belum diimplementasikan untuk Enigma.");
+    }
+  },
 };
