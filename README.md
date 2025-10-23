@@ -1,5 +1,8 @@
 # 🔐 UTS Kriptografi - Extended Vigenere Cipher
 
+
+Link Akses : https://uts-kriptografi.vercel.app/
+
 Proyek ini merupakan implementasi **Extended Vigenere Cipher** berbasis web menggunakan **React**, **TypeScript**, **Vite**, dan **TailwindCSS (shadcn/ui)**.  
 Aplikasi ini dirancang untuk memenuhi tugas **UTS Mata Kuliah Kriptografi**, dengan kemampuan untuk mengenkripsi dan mendekripsi teks maupun file, serta mendukung tampilan modern yang responsif.
 
