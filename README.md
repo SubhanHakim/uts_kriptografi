@@ -1,5 +1,10 @@
 # 🔐 UTS Kriptografi - Extended Vigenere Cipher
 
+Anggota Kelompok :
+Subhan Nur Iqbal Hakim NPM 227006163
+Shamil Sidiq NPM 227006159
+AHMAD ZAENURI NPM 227006126
+
 
 Link Akses : https://uts-kriptografi.vercel.app/
 
